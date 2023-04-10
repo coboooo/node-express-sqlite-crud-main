@@ -68,11 +68,6 @@ console.log("Server is listening on port 3000");
 
 ///////////////////////////////////////////
 
-const now = new Date();
-const timeTo3 =
-  new Date(now.getFullYear(), now.getMonth(), now.getDate(), 16, 35, 0) - now;
-if (timeTo3 > 0) {
-  setTimeout(function () {
-    console.log("되었습니다!");
-  }, timeTo3);
-}
+setInterval(function () {
+  console.log("test");
+}, 3600000); // 1시간(60분 x 60초 x 1000밀리초)마다 실행
