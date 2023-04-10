@@ -6,29 +6,50 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>내 페이지</title>
+    <style>
+        .update {
+            background-color: rgb(255, 255, 222);
+            border: 1px solid rgb(0, 0, 0);
+        }
+
+        .delete {
+            background-color: rgb(255, 188, 152);
+            border: 1px solid rgb(0, 0, 0);
+        }
+
+        /* 추가된 스타일 */
+        .comment {
+            background-color: rgb(255, 118, 27);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+            padding: 5px;
+        }
+    </style>
 </head>
 
 <body>
     <h1>댓글 목록1</h1>
+    <form action="/create" method="post">
+        <input type="text" name="content">
+        <input type="submit" value="Submit">
+    </form>
     <ul>
         <% for (comment of comments) { %>
             <li>
-                <%= comment.content %>
+                <div class="comment">
+                    <span>
+                        <%= comment.content %>
+                    </span>
+                    <form action="/delete/<%= comment.id %>" method="post" class="delete">
+                        <input type="submit" value="삭제하기">
+                    </form>
+                </div>
             </li>
-            <form action="/update/<%= comment.id %>" method="post">
-                <input type="text" name="content">
-                <input type="submit" value="수정하기">
-            </form>
-            <form action="/delete/<%= comment.id %>" method="post">
-                <input type="submit" value="삭제하기">
-            </form>
             <% } %>
     </ul>
     <hr>
-    <form action="/create" method="post">
-        <input type="text" name="content"><br><br>
-        <input type="submit" value="Submit">
-    </form>
 </body>
 
 </html>
