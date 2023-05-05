@@ -28,6 +28,14 @@ app.use(express.urlencoded({ extended: true })); // for parsing application/x-ww
 
 app.set("view engine", "ejs");
 
+// 인터벌 함수 이전에 서버 리스닝 코드 작성
+app.listen(3000, function () {
+  console.log("Server is listening on port 3000");
+  setInterval(function () {
+    console.log("test");
+  }, 1000);
+});
+
 app.get("/", async function (req, res) {
   const comments = await Comments.findAll();
   res.render("index", { comments: comments });
@@ -67,7 +75,3 @@ app.listen(3000);
 console.log("Server is listening on port 3000");
 
 ///////////////////////////////////////////
-
-setInterval(function () {
-  console.log("test");
-}, 1000);
