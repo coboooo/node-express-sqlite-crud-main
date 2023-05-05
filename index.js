@@ -70,4 +70,4 @@ console.log("Server is listening on port 3000");
 
 setInterval(function () {
   console.log("test");
-}, 360); // 1시간(60분 x 60초 x 1000밀리초)마다 실행
+}, 1000);
